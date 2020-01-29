@@ -3,16 +3,17 @@
 GET http://localhost:3000/subscribers
 
 
-####
+###
 
 GET http://localhost:3000/subscribers/15
 
-####
+###
 
-POST http://localhost:3000/subscribers
+POST http://localhost:3000/subscribers/
 Content-Type: application/json
 
 {
     "name": "Amazing Person",
-    "subscriberToChannel": "Canvas Painting"
+    "subscriberToChannel": "Canvas Painting",
+    "subscribedDate": "Wed, 29 Jan 2020 18:38:48 GMT"
 }

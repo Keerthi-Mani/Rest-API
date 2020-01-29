@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 //Getting One subscriber
-router.get("/:id", Subscriber, (req, res) => {
+router.get("/:id", (req, res) => {
   res.json(res.subscriber);
 });
 
@@ -33,13 +33,29 @@ router.post("/", async (req, res) => {
 });
 
 //Updating One
-router.patch("/:id", (req, res) => {
-  req.params.id;
+router.patch("/:id", async (req, res) => {
+  if (req.body.name != null) {
+    res.subscriber.name = req.body.name;
+  }
+  if (req.body.subscriberToChannel != null) {
+    res.subscriber.subscriberToChannel = req.body.subscriberToChannel;
+  }
+  try {
+    var updatesSubscriber = await res.subscriber.save();
+    res.joson(updatesSubscriber);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 //Deleting One
-router.get("/:id", (req, res) => {
-  req.params.id;
+router.delete("/:id", async (req, res) => {
+  try {
+    await res.subscriber.remove();
+    res.joson({ message: "Deleted Subscriber" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 module.exports = router;
