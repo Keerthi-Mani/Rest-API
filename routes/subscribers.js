@@ -14,12 +14,21 @@ router.get("/", async (req, res) => {
 
 //Getting One subscriber
 router.get("/:id", (req, res) => {
-  res.send(req.params.id);
+  res.json(res.subscriber);
 });
 
 //Creating One
-router.post("/", (req, res) => {
-  req.params.id;
+router.post("/", async (req, res) => {
+  var subscriber = new Subscriber({
+    name: req.body.name,
+    subscribedToChannel: req.body.subscribedToChannel
+  });
+  try {
+    var newSubscriber = await subscriber.save();
+    res.status(201).json(newSubscriber);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 //Updating One
