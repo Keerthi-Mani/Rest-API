@@ -1,7 +1,18 @@
 // Get all
+
 GET http://localhost:3000/subscribers
 
 
-//Get one
+####
 
 GET http://localhost:3000/subscribers/15
+
+####
+
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "Amazing Person",
+    "subscriberToChannel": "Canvas Painting"
+}

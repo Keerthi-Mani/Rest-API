@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 //Getting One subscriber
-router.get("/:id", (req, res) => {
+router.get("/:id", Subscriber, (req, res) => {
   res.json(res.subscriber);
 });
 
@@ -21,12 +21,13 @@ router.get("/:id", (req, res) => {
 router.post("/", async (req, res) => {
   var subscriber = new Subscriber({
     name: req.body.name,
-    subscribedToChannel: req.body.subscribedToChannel
+    subscriberToChannel: req.body.subscriberToChannel
   });
   try {
     var newSubscriber = await subscriber.save();
     res.status(201).json(newSubscriber);
   } catch (err) {
+    // users bad request
     res.status(400).json({ message: err.message });
   }
 });
