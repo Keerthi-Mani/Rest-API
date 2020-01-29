@@ -1,0 +1,7 @@
+// Get all
+GET http://localhost:3000/subscribers
+
+
+//Get one
+
+GET http://localhost:3000/subscribers/15
