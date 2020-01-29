@@ -1,24 +1,25 @@
 //Dependencies
-var express = require("express");
-var mongoose = require("mongoose");
-var path = require("path");
 require("dotenv").config();
 
-//Connect mongodb
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-var db = mongoose.connection;
-db.on("error", error => console.error(error));
-db.once("open", () => console.log("Connected to Database....."));
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 
-// Sets up the Express App
-var app = express();
+//Connect to database
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", error => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
+
+//Middleware
 app.use(express.json());
+
+const subscribersRouter = require("./routes/subscribers");
+app.use("/subscribers", subscribersRouter);
 
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 3000;
 
-// Starts the server to begin listening
-// =============================================================
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
