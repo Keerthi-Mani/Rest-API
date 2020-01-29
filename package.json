@@ -1,0 +1,30 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keerthi-Mani/Rest-API.git"
+  },
+  "keywords": [
+    "\"\""
+  ],
+  "author": "keerthi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keerthi-Mani/Rest-API/issues"
+  },
+  "homepage": "https://github.com/Keerthi-Mani/Rest-API#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  }
+}
