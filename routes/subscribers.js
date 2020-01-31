@@ -1,12 +1,13 @@
-var express = require("express");
-var router = express.Router();
-var Subscriber = require("../models/subscriber");
+const express = require("express");
+const router = express.Router();
+const Subscriber = require("../models/subscriber");
 
 //Getting all the subscribers
 router.get("/", async (req, res) => {
   try {
-    var subscribers = await Subscriber.find();
+    const subscribers = await Subscriber.find();
     res.json(subscribers);
+    console.log(subscriber);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -19,7 +20,7 @@ router.get("/:id", getSubscriber, (req, res) => {
 
 //Creating One
 router.post("/", async (req, res) => {
-  var subscriber = new Subscriber({
+  const subscriber = new Subscriber({
     name: req.body.name,
     subscriberToChannel: req.body.subscriberToChannel
   });
@@ -41,7 +42,7 @@ router.patch("/:id", getSubscriber, async (req, res) => {
     res.subscriber.subscriberToChannel = req.body.subscriberToChannel;
   }
   try {
-    var updatesSubscriber = await res.subscriber.save();
+    const updatesSubscriber = await res.subscriber.save();
     res.joson(updatesSubscriber);
   } catch (err) {
     res.status(400).json({ message: err.message });

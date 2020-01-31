@@ -15,5 +15,4 @@ Content-Type: application/json
 {
     "name": "Amazing Person",
     "subscriberToChannel": "Canvas Painting",
-    "subscribedDate": "Wed, 29 Jan 2020 18:38:48 GMT"
 }
